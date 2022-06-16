@@ -20,6 +20,7 @@ const validateInput = ({ target }) => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
+  localStorage.setItem('player', input.value)
   msgInfo.textContent = "Página do game não implementada!";
   window.location = '../pages/game.html';
 };
