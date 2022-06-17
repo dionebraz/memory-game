@@ -28,6 +28,7 @@ body::before {
 
 a {
     z-index: 2;
+    color: #fff;
 }
 
 h1 {
