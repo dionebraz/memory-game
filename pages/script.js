@@ -96,7 +96,7 @@ function escolherCard() {
 
       if (score == baralho.length / 2) {
         setTimeout(() => {
-            alert("Muito bom!, Você achou todos os pares.");
+          window.location = "./concluido/index.html"
           grade.innerHTML = "";
           criarGrade();
         }, 1000);
