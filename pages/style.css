@@ -5,55 +5,32 @@
 }
 
 body {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    width: 100vw;
-    height: 100vh;
-    color: #fff;
-    background: url(https://images5.alphacoders.com/796/796108.jpg) no-repeat center center / cover;
+    flex-direction: column;
+}
+
+h1,
+h3 {
     font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    
 }
 
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
+h3 {
+    margin-top: 20px;
+    margin-bottom: 100px;
 }
 
-.container-image {
-    width: 200px;
-    height: 200px;
+
+#grade {
     display: grid;
-    place-items: center;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: inset -3px -3px 5px #ffffff, inset 3px 3px 5px #00000070;
-    z-index: 1;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-h1 {
-    z-index: 1;
-}
-
-@media (max-width: 450px) {
-    body {
-        background: none;
-        display: flex;
-        flex-direction: column;
-    }
-
-    body:before {
-        display: none;
-    }
-
-    h1 {
-        color: #333;
-        font-size: 12px;
-    }
+img {
+    width: 150px;
 }

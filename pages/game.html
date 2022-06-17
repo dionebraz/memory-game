@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo Da Memoria</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
   </head>
-  <body>
-    <div class="container-image">
-      <img src="https://steamuserimages-a.akamaihd.net/ugc/1765955274776420506/233EAB791DDB1BAC4111D41B37E7D28460AADF6C/?imw=200&imh=200&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="teste"/>
-      </div>
-      
-    <h1>Em desenvolvimento!</h1>
-    <audio src="../midia/audio.mp3" autoplay></audio>
+  <body onload="criarGrade()">
+    <h1>Jogo da memoria</h1>
+    <h3>Pontos:<span id="spots">0</span></h3>
+    <div id="grade"></div>
   </body>
 </html>
