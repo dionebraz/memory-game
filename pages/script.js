@@ -1,51 +1,51 @@
 const baralho = [
   {
-    nome: "urso1",
-    img: "../images/panda-bebendo.webp",
+    nome: "back",
+    img: "../images/beth.png",
   },
   {
     nome: "urso2",
-    img: "../images/panda-dormindo.webp",
+    img: "../images/jerry.png",
   },
   {
     nome: "urso3",
-    img: "../images/panda-bravo.webp",
+    img: "../images/jessica.png",
   },
   {
     nome: "urso4",
-    img: "../images/panda-mochila.webp",
+    img: "../images/meeseeks.png",
   },
   {
     nome: "urso5",
-    img: "../images/panda-pc.webp",
+    img: "../images/morty.png",
   },
   {
     nome: "urso6",
-    img: "../images/panda-sorvete.webp",
+    img: "../images/rick.png",
   },
   {
-    nome: "urso1",
-    img: "../images/panda-bebendo.webp",
+    nome: "back",
+    img: "../images/beth.png",
   },
   {
     nome: "urso2",
-    img: "../images/panda-dormindo.webp",
+    img: "../images/jerry.png",
   },
   {
     nome: "urso3",
-    img: "../images/panda-bravo.webp",
+    img: "../images/jessica.png",
   },
   {
     nome: "urso4",
-    img: "../images/panda-mochila.webp",
+    img: "../images/meeseeks.png",
   },
   {
     nome: "urso5",
-    img: "../images/panda-pc.webp",
+    img: "../images/morty.png",
   },
   {
     nome: "urso6",
-    img: "../images/panda-sorvete.webp",
+    img: "../images/rick.png",
   },
 ];
 
@@ -66,7 +66,7 @@ function criarGrade() {
     let card = document.createElement("img");
     card.id = i;
     card.name = baralho[i].nome;
-    card.src = "../images/capa-game.jpg";
+    card.src = "../images/back.png";
     card.addEventListener("click", escolherCard);
     grade.appendChild(card);
   }
@@ -83,15 +83,15 @@ function escolherCard() {
       let card2 = escolhidos[1];
 
       if (card1.name == card2.name && card1.id != card2.id) {
-        card1.src = "../images/ok.jpg";
-        card2.src = "../images/ok.jpg";
+        card1.src = "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-ghost-white-solid-color-background.jpg";
+        card2.src = "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-ghost-white-solid-color-background.jpg";
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
         score++;
         spots.innerText = score;
       } else {
-        card1.src = "../images/capa-game.jpg";
-        card2.src = "../images/capa-game.jpg";
+        card1.src = "../images/back.png";
+        card2.src = "../images/back.png";
       }
 
       if (score == baralho.length / 2) {
