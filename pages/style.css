@@ -10,18 +10,19 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: whitesmoke;
 }
 
 h1,
 h3 {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
-    
+    color: #333;
 }
 
 h3 {
-    margin-top: 20px;
-    margin-bottom: 100px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 
@@ -45,6 +46,6 @@ img {
     }
     
     img {
-        width: 75px;
+        width: 85px;
     }
 }

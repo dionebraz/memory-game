@@ -66,7 +66,7 @@ function criarGrade() {
     let card = document.createElement("img");
     card.id = i;
     card.name = baralho[i].nome;
-    card.src = "../images/rick-and-morty.jpg";
+    card.src = "../images/capa-game.jpg";
     card.addEventListener("click", escolherCard);
     grade.appendChild(card);
   }
@@ -83,15 +83,15 @@ function escolherCard() {
       let card2 = escolhidos[1];
 
       if (card1.name == card2.name && card1.id != card2.id) {
-        card1.src = "https://lh3.googleusercontent.com/Qi0jvdDe5T2F96YgZrC7FC5nvT5V1Go2b_3woQuVu9QTXqFqvQ40cGKuSalo_JMeIQ";
-        card2.src = "https://lh3.googleusercontent.com/Qi0jvdDe5T2F96YgZrC7FC5nvT5V1Go2b_3woQuVu9QTXqFqvQ40cGKuSalo_JMeIQ";
+        card1.src = "../images/ok.jpg";
+        card2.src = "../images/ok.jpg";
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
         score++;
         spots.innerText = score;
       } else {
-        card1.src = "../images/rick-and-morty.jpg";
-        card2.src = "../images/rick-and-morty.jpg";
+        card1.src = "../images/capa-game.jpg";
+        card2.src = "../images/capa-game.jpg";
       }
 
       if (score == baralho.length / 2) {
