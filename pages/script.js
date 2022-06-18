@@ -56,13 +56,11 @@ baralho.sort(() => {
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
 let score;
-let scoreAnterior;
 let escolhidos = [];
 
 function criarGrade() {
   score = 0;
   spots.innerText = score;
-  spots.innerText = scoreAnterior
 
   for (let i = 0; i < baralho.length; i++) {
     let card = document.createElement("img");
@@ -98,7 +96,6 @@ function escolherCard() {
 
       if (score == baralho.length / 2) {
         setTimeout(() => {
-          scoreAnterior = score
           grade.innerHTML = "";
           criarGrade();
         }, 1000);
