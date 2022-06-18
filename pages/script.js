@@ -83,8 +83,6 @@ function escolherCard() {
       let card2 = escolhidos[1];
 
       if (card1.name == card2.name && card1.id != card2.id) {
-        card1.src = "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-ghost-white-solid-color-background.jpg";
-        card2.src = "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-ghost-white-solid-color-background.jpg";
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
         score++;

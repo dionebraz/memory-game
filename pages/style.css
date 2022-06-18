@@ -33,7 +33,6 @@ h3 {
 
 img {
     width: 150px;
-    height: 200px;
 }
 
 @media (max-width: 500px) {
@@ -47,5 +46,6 @@ img {
     
     img {
         width: 85px;
+        height: auto;
     }
 }
