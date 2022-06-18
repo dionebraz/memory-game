@@ -34,3 +34,17 @@ h3 {
 img {
     width: 150px;
 }
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 12px;
+    }
+    
+    img {
+        width: 75px;
+    }
+}
