@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: whitesmoke;
+    background: url(../images/bg.jpg) no-repeat center center / cover;
 }
 
 h1,
@@ -27,15 +27,20 @@ h3 {
 
 #grade {
     display: grid;
-    gap: 5px;
+    gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 img {
+    position: relative;
     width: 150px;
 }
 
 @media (max-width: 500px) {
+    #grade {
+        gap: 6px;
+    }
+
     h1 {
         font-size: 20px;
     }

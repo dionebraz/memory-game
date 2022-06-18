@@ -56,11 +56,13 @@ baralho.sort(() => {
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
 let score;
+let scoreAnterior;
 let escolhidos = [];
 
 function criarGrade() {
   score = 0;
   spots.innerText = score;
+  spots.innerText = scoreAnterior
 
   for (let i = 0; i < baralho.length; i++) {
     let card = document.createElement("img");
@@ -85,6 +87,8 @@ function escolherCard() {
       if (card1.name == card2.name && card1.id != card2.id) {
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
+        card1.style.filter = 'grayscale(100%)';
+        card2.style.filter = 'grayscale(100%)';
         score++;
         spots.innerText = score;
       } else {
@@ -94,13 +98,13 @@ function escolherCard() {
 
       if (score == baralho.length / 2) {
         setTimeout(() => {
-          window.location = "./concluido/index.html"
+          scoreAnterior = score
           grade.innerHTML = "";
           criarGrade();
         }, 1000);
       }
 
       escolhidos = [];
-    }, 1000);
+    }, 500);
   }
 }
