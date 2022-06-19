@@ -55,12 +55,12 @@ baralho.sort(() => {
 
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
+const playerName = document.querySelector('#playerName').innerHTML = localStorage.getItem("player")
 let score;
 let escolhidos = [];
 
 function criarGrade() {
   score = 0;
-  spots.innerText = score;
 
   for (let i = 0; i < baralho.length; i++) {
     let card = document.createElement("img");
@@ -88,7 +88,6 @@ function escolherCard() {
         card1.style.filter = 'grayscale(100%)';
         card2.style.filter = 'grayscale(100%)';
         score++;
-        spots.innerText = score;
       } else {
         card1.src = "../images/back.png";
         card2.src = "../images/back.png";
@@ -97,12 +96,38 @@ function escolherCard() {
       if (score == baralho.length / 2) {
         setTimeout(() => {
           grade.innerHTML = "";
-          document.location.reload(true)
           criarGrade();
+          document.location.reload(true)
         }, 1000);
       }
 
       escolhidos = [];
     }, 500);
   }
+}
+
+// TEMPORIZADOR
+
+var mm = 0;
+var ss = 0;
+
+var tempo = 900;
+var cron;
+
+cron = setInterval(() => {
+  Timer();
+}, tempo);
+
+
+
+function Timer() {
+  ss++
+
+  if(ss == 60) {
+    ss = 0;
+    mm++;
+  };
+
+  var format = (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
+  document.getElementById("timer").innerText = format
 }

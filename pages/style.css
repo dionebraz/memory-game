@@ -13,16 +13,19 @@ body {
     background: url(../images/bg.jpg) no-repeat center center / cover;
 }
 
-h1,
-h3 {
+header {
+    width: 630px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
     font-family: 'Press Start 2P', cursive;
-    text-align: center;
     color: #333;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
-h3 {
-    margin-top: 10px;
-    margin-bottom: 30px;
+#playerName {
+    font-size: 1.25rem;
 }
 
 #grade {
@@ -37,16 +40,18 @@ img {
 }
 
 @media (max-width: 500px) {
+    header {
+        padding: 1rem;
+        width: 358px;
+        font-size: 8px;
+    }
+
+    #playerName {
+        font-size: 14px;
+    }
+
     #grade {
         gap: 6px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    h3 {
-        font-size: 12px;
     }
     
     img {
