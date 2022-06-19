@@ -97,6 +97,7 @@ function escolherCard() {
       if (score == baralho.length / 2) {
         setTimeout(() => {
           grade.innerHTML = "";
+          document.location.reload(true)
           criarGrade();
         }, 1000);
       }
