@@ -1,7 +1,6 @@
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const form = document.querySelector("form");
-const msgInfo = document.querySelector("#messageInfo");
 
 const validateInput = ({ target }) => {
   if (target.value.length > 4) {
@@ -20,9 +19,8 @@ const validateInput = ({ target }) => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  localStorage.setItem('player', input.value)
-  msgInfo.textContent = "Página do game não implementada!";
-  window.location = '../pages/game.html';
+  localStorage.setItem("player", input.value);
+  window.location = "resources/memory_game/game.html";
 };
 
 input.addEventListener("input", validateInput);

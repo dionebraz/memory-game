@@ -4,23 +4,23 @@ const baralho = [
     img: "../images/beth.png",
   },
   {
-    nome: "urso2",
+    nome: "jerry",
     img: "../images/jerry.png",
   },
   {
-    nome: "urso3",
+    nome: "jessica",
     img: "../images/jessica.png",
   },
   {
-    nome: "urso4",
+    nome: "meeseeks",
     img: "../images/meeseeks.png",
   },
   {
-    nome: "urso5",
+    nome: "morty",
     img: "../images/morty.png",
   },
   {
-    nome: "urso6",
+    nome: "rick",
     img: "../images/rick.png",
   },
   {
@@ -28,23 +28,23 @@ const baralho = [
     img: "../images/beth.png",
   },
   {
-    nome: "urso2",
+    nome: "jerry",
     img: "../images/jerry.png",
   },
   {
-    nome: "urso3",
+    nome: "jessica",
     img: "../images/jessica.png",
   },
   {
-    nome: "urso4",
+    nome: "meeseeks",
     img: "../images/meeseeks.png",
   },
   {
-    nome: "urso5",
+    nome: "morty",
     img: "../images/morty.png",
   },
   {
-    nome: "urso6",
+    nome: "rick",
     img: "../images/rick.png",
   },
 ];
@@ -55,7 +55,8 @@ baralho.sort(() => {
 
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
-const playerName = document.querySelector('#playerName').innerHTML = localStorage.getItem("player")
+const playerName = (document.querySelector("#playerName").innerHTML =
+  localStorage.getItem("player"));
 let score;
 let escolhidos = [];
 
@@ -85,8 +86,8 @@ function escolherCard() {
       if (card1.name == card2.name && card1.id != card2.id) {
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
-        card1.style.filter = 'grayscale(100%)';
-        card2.style.filter = 'grayscale(100%)';
+        card1.style.filter = "grayscale(100%)";
+        card2.style.filter = "grayscale(100%)";
         score++;
       } else {
         card1.src = "../images/back.png";
@@ -97,7 +98,7 @@ function escolherCard() {
         setTimeout(() => {
           grade.innerHTML = "";
           criarGrade();
-          document.location.reload(true)
+          document.location.reload(true);
         }, 1000);
       }
 
@@ -106,7 +107,7 @@ function escolherCard() {
   }
 }
 
-// TEMPORIZADOR
+//===== TEMPORIZADOR =======================//
 
 var mm = 0;
 var ss = 0;
@@ -118,16 +119,14 @@ cron = setInterval(() => {
   Timer();
 }, tempo);
 
-
-
 function Timer() {
-  ss++
+  ss++;
 
-  if(ss == 60) {
+  if (ss == 60) {
     ss = 0;
     mm++;
-  };
+  }
 
-  var format = (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
-  document.getElementById("timer").innerText = format
+  var format = (mm < 10 ? "0" + mm : mm) + ":" + (ss < 10 ? "0" + ss : ss);
+  document.getElementById("timer").innerText = format;
 }
