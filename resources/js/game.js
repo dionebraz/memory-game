@@ -95,6 +95,7 @@ function escolherCard() {
       }
 
       if (score == baralho.length / 2) {
+        clearInterval(cron)
         setTimeout(() => {
           const resetButton = document.createElement('button')
           resetButton.innerHTML = 'Reiniciar'
