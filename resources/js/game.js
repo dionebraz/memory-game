@@ -53,10 +53,10 @@ baralho.sort(() => {
   return 0.5 - Math.random();
 });
 
+const body = document.querySelector('body')
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
-const playerName = (document.querySelector("#playerName").innerHTML =
-  localStorage.getItem("player"));
+const playerName = (document.querySelector("#playerName").innerHTML = localStorage.getItem("player"));
 let score;
 let escolhidos = [];
 
@@ -96,14 +96,17 @@ function escolherCard() {
 
       if (score == baralho.length / 2) {
         setTimeout(() => {
-          grade.innerHTML = "";
-          criarGrade();
-          document.location.reload(true);
-        }, 1000);
+          const resetButton = document.createElement('button')
+          resetButton.innerHTML = 'Reiniciar'
+          body.appendChild(resetButton)
+          resetButton.addEventListener('click', () => {
+            document.location.reload(true)
+          })
+        }, 500);
       }
 
       escolhidos = [];
-    }, 500);
+    }, 1000);
   }
 }
 
@@ -112,7 +115,7 @@ function escolherCard() {
 var mm = 0;
 var ss = 0;
 
-var tempo = 900;
+var tempo = 1000;
 var cron;
 
 cron = setInterval(() => {
