@@ -88,6 +88,8 @@ function escolherCard() {
         card2.removeEventListener("click", escolherCard);
         card1.style.filter = "grayscale(100%)";
         card2.style.filter = "grayscale(100%)";
+        const audio1 = document.querySelector('#audio1')
+        audio1.play()
         score++;
       } else {
         card1.src = "../images/back.png";
@@ -103,6 +105,8 @@ function escolherCard() {
           resetButton.addEventListener('click', () => {
             document.location.reload(true)
           })
+          const audio2 = document.querySelector('#audio2')
+          audio2.play()
         }, 500);
       }
 
