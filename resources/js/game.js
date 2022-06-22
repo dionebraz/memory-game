@@ -82,8 +82,8 @@ function criarGrade() {
   }
 }
 
-function escolherCard() {
-  let card = this;
+function escolherCard(e) {
+  let card = e.target;
   card.src = baralho[card.id].img;
   escolhidos.push(card);
 
