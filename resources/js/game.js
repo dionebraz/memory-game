@@ -84,59 +84,65 @@ function criarGrade() {
 
 function escolherCard(e) {
   let card = e.target;
-  card.src = baralho[card.id].img;
-  escolhidos.push(card);
 
-  card.classList.toggle('front')
+  // Somente entra neste "if" se não existirem escolhidos ou se existir somente 1 escolhido
+  // Se já existirem 2 escolhas o terceiro ou quarto clique será ignorado até que o setTimeout seja finalizado voltando os escolhidos para uma array vazia
+  if (escolhidos.length < 2) {
+    card.src = baralho[card.id].img;
+    escolhidos.push(card);
 
-  if (escolhidos.length == 2) {
-    setTimeout(() => {
-      let card1 = escolhidos[0];
-      let card2 = escolhidos[1];
+    card.classList.toggle('front')
 
-      if (card1.name == card2.name && card1.id != card2.id) {
-        selectionSound()
+    // Somente entra neste "if" se já existir 1 escolhido e essa chamada está adicionando o segundo
+    if (escolhidos.length == 2) {
+      setTimeout(() => {
+        let card1 = escolhidos[0];
+        let card2 = escolhidos[1];
 
-        card1.removeEventListener("click", escolherCard);
-        card2.removeEventListener("click", escolherCard);
-        card1.style.filter = "grayscale(100%)";
-        card2.style.filter = "grayscale(100%)";
-        score++;
-        spots.innerHTML = score
-      } else {
-        card1.src = "../images/back.png";
-        card2.src = "../images/back.png";
-        card.classList.toggle('front')
-      }
+        if (card1.name == card2.name && card1.id != card2.id) {
+          selectionSound()
 
-      if (score == baralho.length / 2) {
-        concludedSound();
-        clearInterval(cron);
+          card1.removeEventListener("click", escolherCard);
+          card2.removeEventListener("click", escolherCard);
+          card1.style.filter = "grayscale(100%)";
+          card2.style.filter = "grayscale(100%)";
+          score++;
+          spots.innerHTML = score
+        } else {
+          card1.src = "../images/back.png";
+          card2.src = "../images/back.png";
+          card.classList.toggle('front')
+        }
 
-        setTimeout(() => {
-          const resetButton = document.createElement("button");
-          resetButton.innerHTML = "Reiniciar";
-          body.appendChild(resetButton);
-          resetButton.addEventListener("click", () => {
-            document.location.reload(true);
-            lastSpots = score
-            if(lastSpots == score) {}
-          });
-        }, 500);
-      }
+        if (score == baralho.length / 2) {
+          concludedSound();
+          clearInterval(cron);
 
-      function concludedSound() {
-        const audio2 = document.querySelector("#audio2");
-        audio2.play();
-      }
-  
-      function selectionSound() {
-        const audio1 = document.querySelector("#audio1");
-        audio1.play();
-      }
+          setTimeout(() => {
+            const resetButton = document.createElement("button");
+            resetButton.innerHTML = "Reiniciar";
+            body.appendChild(resetButton);
+            resetButton.addEventListener("click", () => {
+              document.location.reload(true);
+              lastSpots = score
+              if(lastSpots == score) {}
+            });
+          }, 500);
+        }
 
-      escolhidos = [];
-    }, 500);
+        function concludedSound() {
+          const audio2 = document.querySelector("#audio2");
+          audio2.play();
+        }
+    
+        function selectionSound() {
+          const audio1 = document.querySelector("#audio1");
+          audio1.play();
+        }
+
+        escolhidos = [];
+      }, 500);
+    }
   }
 }
 
