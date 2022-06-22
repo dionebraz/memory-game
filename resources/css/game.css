@@ -41,6 +41,11 @@ header {
 img {
     position: relative;
     width: 150px;
+    transition: all .3s ease-in;
+}
+
+img.front {
+    transform: rotateY(-180deg);
 }
 
 button {
