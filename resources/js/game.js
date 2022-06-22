@@ -53,10 +53,11 @@ baralho.sort(() => {
   return 0.5 - Math.random();
 });
 
-const body = document.querySelector('body')
+const body = document.querySelector("body");
 const grade = document.querySelector("#grade");
 const spots = document.querySelector("#spots");
-const playerName = (document.querySelector("#playerName").innerHTML = localStorage.getItem("player"));
+const playerName = (document.querySelector("#playerName").innerHTML =
+  localStorage.getItem("player"));
 let score;
 let escolhidos = [];
 
@@ -84,12 +85,12 @@ function escolherCard() {
       let card2 = escolhidos[1];
 
       if (card1.name == card2.name && card1.id != card2.id) {
+        selectionSound()
+        
         card1.removeEventListener("click", escolherCard);
         card2.removeEventListener("click", escolherCard);
         card1.style.filter = "grayscale(100%)";
         card2.style.filter = "grayscale(100%)";
-        const audio1 = document.querySelector('#audio1')
-        audio1.play()
         score++;
       } else {
         card1.src = "../images/back.png";
@@ -97,21 +98,31 @@ function escolherCard() {
       }
 
       if (score == baralho.length / 2) {
-        clearInterval(cron)
+        concludedSound();
+        clearInterval(cron);
+
         setTimeout(() => {
-          const resetButton = document.createElement('button')
-          resetButton.innerHTML = 'Reiniciar'
-          body.appendChild(resetButton)
-          resetButton.addEventListener('click', () => {
-            document.location.reload(true)
-          })
-          const audio2 = document.querySelector('#audio2')
-          audio2.play()
+          const resetButton = document.createElement("button");
+          resetButton.innerHTML = "Reiniciar";
+          body.appendChild(resetButton);
+          resetButton.addEventListener("click", () => {
+            document.location.reload(true);
+          });
         }, 500);
       }
 
+      function concludedSound() {
+        const audio2 = document.querySelector("#audio2");
+        audio2.play();
+      }
+  
+      function selectionSound() {
+        const audio1 = document.querySelector("#audio1");
+        audio1.play();
+      }
+
       escolhidos = [];
-    }, 1000);
+    }, 500);
   }
 }
 
