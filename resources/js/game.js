@@ -109,7 +109,6 @@ function escolherCard(e) {
         }
 
         if (score == baralho.length / 2) {
-          concludedSound();
           clearInterval(cron);
 
           setTimeout(() => {
@@ -119,6 +118,7 @@ function escolherCard(e) {
             resetButton.addEventListener("click", () => {
               document.location.reload(true);
             });
+            concludedSound();
           }, 500);
         }
 
