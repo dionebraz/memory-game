@@ -63,14 +63,8 @@ let score;
 let escolhidos = [];
 
 function criarGrade() {
-
-  
   score = 0;
   spots.innerHTML = score
-
-  if(lastSpots > score) {
-    lastSpots.innerHTML;
-  }
 
   for (let i = 0; i < baralho.length; i++) {
     let card = document.createElement("img");
@@ -124,8 +118,6 @@ function escolherCard(e) {
             body.appendChild(resetButton);
             resetButton.addEventListener("click", () => {
               document.location.reload(true);
-              lastSpots = score
-              if(lastSpots == score) {}
             });
           }, 500);
         }
