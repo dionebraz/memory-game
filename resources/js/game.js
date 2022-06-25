@@ -98,8 +98,10 @@ function escolherCard(e) {
 
           card1.removeEventListener("click", escolherCard);
           card2.removeEventListener("click", escolherCard);
-          card1.style.filter = "grayscale(100%)";
-          card2.style.filter = "grayscale(100%)";
+          card1.style.filter = "saturate(0)";
+          card2.style.filter = "saturate(0)";
+          card1.classList.add('opacity')
+          card2.classList.add('opacity')
           score++;
           spots.innerHTML = score
         } else {

@@ -19,6 +19,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
+    margin-bottom: 30px;
     font-family: 'Press Start 2P', cursive;
     color: #333;
     background-color: rgba(255, 255, 255, 0.75);
@@ -42,6 +43,7 @@ img {
     position: relative;
     width: 150px;
     transition: all .3s ease-in;
+    border-radius: 6px;
 }
 
 img.front {
@@ -87,5 +89,9 @@ button {
     img {
         width: 85px;
         height: auto;
+    }
+
+    img.opacity {
+        opacity: 0.5;
     }
 }
