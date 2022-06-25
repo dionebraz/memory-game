@@ -78,6 +78,10 @@ button {
         font-size: 12px;
     }
 
+    #score {
+        font-size: 10px;
+    }
+
     #container-time p {
         font-size: 10px;
     }
