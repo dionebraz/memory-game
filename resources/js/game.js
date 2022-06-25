@@ -1,165 +1,104 @@
-const baralho = [
-  {
-    nome: "back",
-    img: "../images/beth.png",
-  },
-  {
-    nome: "jerry",
-    img: "../images/jerry.png",
-  },
-  {
-    nome: "jessica",
-    img: "../images/jessica.png",
-  },
-  {
-    nome: "meeseeks",
-    img: "../images/meeseeks.png",
-  },
-  {
-    nome: "morty",
-    img: "../images/morty.png",
-  },
-  {
-    nome: "rick",
-    img: "../images/rick.png",
-  },
-  {
-    nome: "back",
-    img: "../images/beth.png",
-  },
-  {
-    nome: "jerry",
-    img: "../images/jerry.png",
-  },
-  {
-    nome: "jessica",
-    img: "../images/jessica.png",
-  },
-  {
-    nome: "meeseeks",
-    img: "../images/meeseeks.png",
-  },
-  {
-    nome: "morty",
-    img: "../images/morty.png",
-  },
-  {
-    nome: "rick",
-    img: "../images/rick.png",
-  },
+const grade = document.querySelector('.grade');
+
+const characters = [
+  'beth',
+  'jerry',
+  'jessica',
+  'morty',
+  'pessoa-passaro',
+  'pickle-rick',
+  'rick',
+  'summer',
+  'meeseeks',
+  'scroopy',
 ];
 
-baralho.sort(() => {
-  return 0.5 - Math.random();
-});
+const createElement = (tag, className) => {
+  const element = document.createElement(tag);
+  element.className = className;
+  return element;
+}
 
-const body = document.querySelector("body");
-const grade = document.querySelector("#grade");
-const spots = document.querySelector("#spots");
-const lastSpots = document.querySelector('#last-spots')
-const playerName = (document.querySelector("#playerName").innerHTML = localStorage.getItem("player"));
+let firstCard = '';
+let secondCard = '';
 
-let score;
-let escolhidos = [];
+const checkEndGame = () => {
+  const disabledCards = document.querySelectorAll('.disabled-card');
 
-function criarGrade() {
-  score = 0;
-  spots.innerHTML = score
-
-  for (let i = 0; i < baralho.length; i++) {
-    let card = document.createElement("img");
-    card.id = i;
-    card.name = baralho[i].nome;
-    card.src = "../images/back.png";
-    card.addEventListener("click", escolherCard);
-    grade.appendChild(card);
+  if (disabledCards.length === 20) {
+    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), 500)
+    const audio2 = document.querySelector('#audio2').play()
   }
 }
 
-function escolherCard(e) {
-  let card = e.target;
+const checkCards = () => {
+  const firstCharacter = firstCard.getAttribute('data-character');
+  const secondCharacter = secondCard.getAttribute('data-character');
 
-  // Somente entra neste "if" se não existirem escolhidos ou se existir somente 1 escolhido
-  // Se já existirem 2 escolhas o terceiro ou quarto clique será ignorado até que o setTimeout seja finalizado voltando os escolhidos para uma array vazia
-  if (escolhidos.length < 2) {
-    card.src = baralho[card.id].img;
-    escolhidos.push(card);
+  if (firstCharacter === secondCharacter) {
+    firstCard.firstChild.classList.add('disabled-card');
+    secondCard.firstChild.classList.add('disabled-card');
 
-    card.classList.toggle('front')
+    const audio1 = document.querySelector('#audio1').play()
 
-    // Somente entra neste "if" se já existir 1 escolhido e essa chamada está adicionando o segundo
-    if (escolhidos.length == 2) {
-      setTimeout(() => {
-        let card1 = escolhidos[0];
-        let card2 = escolhidos[1];
+    firstCard = '';
+    secondCard = '';
 
-        if (card1.name == card2.name && card1.id != card2.id) {
-          selectionSound()
+    checkEndGame();
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove('reveal-card');
+      secondCard.classList.remove('reveal-card');
 
-          card1.removeEventListener("click", escolherCard);
-          card2.removeEventListener("click", escolherCard);
-          card1.style.filter = "saturate(0)";
-          card2.style.filter = "saturate(0)";
-          card1.classList.add('opacity')
-          card2.classList.add('opacity')
-          score++;
-          spots.innerHTML = score
-        } else {
-          card1.src = "../images/back.png";
-          card2.src = "../images/back.png";
-          card.classList.toggle('front')
-        }
+      firstCard = '';
+      secondCard = '';
+    }, 500);
 
-        if (score == baralho.length / 2) {
-          clearInterval(cron);
-
-          setTimeout(() => {
-            const resetButton = document.createElement("button");
-            resetButton.innerHTML = "Reiniciar";
-            body.appendChild(resetButton);
-            resetButton.addEventListener("click", () => {
-              document.location.reload(true);
-            });
-            concludedSound();
-          }, 500);
-        }
-
-        function concludedSound() {
-          const audio2 = document.querySelector("#audio2");
-          audio2.play();
-        }
     
-        function selectionSound() {
-          const audio1 = document.querySelector("#audio1");
-          audio1.play();
-        }
-
-        escolhidos = [];
-      }, 500);
-    }
   }
 }
 
-//===== TEMPORIZADOR =======================//
-
-var mm = 0;
-var ss = 0;
-
-var tempo = 1000;
-var cron;
-
-cron = setInterval(() => {
-  Timer();
-}, tempo);
-
-function Timer() {
-  ss++;
-
-  if (ss == 60) {
-    ss = 0;
-    mm++;
+const revealCard = ({target}) => {
+  if (target.parentNode.className.includes('reveal-card')) {
+    return;
   }
 
-  var format = (mm < 10 ? "0" + mm : mm) + ":" + (ss < 10 ? "0" + ss : ss);
-  document.getElementById("timer").innerText = format;
+  if (firstCard === '') {
+    target.parentNode.classList.add('reveal-card');
+    firstCard = target.parentNode;
+  } else if (secondCard === '') {
+    target.parentNode.classList.add('reveal-card');
+    secondCard = target.parentNode;
+  };
+
+  checkCards();
 }
+
+const createCard = (character) => {
+  const card = createElement('div', 'card');
+  const front = createElement('div', 'face front');
+  const back = createElement('div', 'face back');
+
+  front.style.backgroundImage = `url('../images/${character}.png')`;
+
+  card.appendChild(front);
+  card.appendChild(back);
+
+  card.addEventListener('click', revealCard);
+  card.setAttribute('data-character', character)
+  
+  return card;
+};
+
+const loadGame = () => {
+  const duplicateCharacters = [ ...characters, ...characters ];
+
+  const shuffledArray = duplicateCharacters.sort( () => Math.random() - 0.5 );
+
+  shuffledArray.forEach( (character) => {
+    const card = createCard(character);
+    grade.appendChild(card);
+  } );
+}
+
+loadGame();
