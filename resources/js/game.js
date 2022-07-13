@@ -1,17 +1,21 @@
 const grade = document.querySelector('.grade');
 
 const characters = [
-  'beth',
-  'jerry',
-  'jessica',
-  'morty',
-  'pessoa-passaro',
-  'pickle-rick',
-  'rick',
-  'summer',
-  'meeseeks',
-  'scroopy',
+  'Billy',
+  'Dustin',
+  'Eleven',
+  'Jonathan',
+  'Karen',
+  'Lucas',
+  'Max',
+  'Mike',
+  'Steve',
+  'Will',
 ];
+
+const audioTheme = () => {
+  const $themeAudio = document.querySelector('#audio-theme').play()
+}
 
 const createElement = (tag, className) => {
   const element = document.createElement(tag);
@@ -26,8 +30,8 @@ const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
-    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), 500)
-    const audio2 = document.querySelector('#audio2').play()
+    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), 1000)
+    location.reload()
   }
 }
 
@@ -79,7 +83,7 @@ const createCard = (character) => {
   const front = createElement('div', 'face front');
   const back = createElement('div', 'face back');
 
-  front.style.backgroundImage = `url('../images/${character}.png')`;
+  front.style.backgroundImage = `url('../images/${character}.webp')`;
 
   card.appendChild(front);
   card.appendChild(back);

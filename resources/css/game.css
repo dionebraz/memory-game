@@ -45,7 +45,7 @@ body {
 
 .back {
     backface-visibility: hidden;
-    background-image: url(../images/back.png);
+    background-image: url(../images/Back.webp);
 }
 
 .reveal-card {
