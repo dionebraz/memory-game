@@ -1,4 +1,5 @@
 const grade = document.querySelector('.grade');
+const $themeAudio = document.querySelector('#audio-theme')
 
 const characters = [
   'Billy',
@@ -14,7 +15,7 @@ const characters = [
 ];
 
 const audioTheme = () => {
-  const $themeAudio = document.querySelector('#audio-theme').play()
+  $themeAudio.play()
 }
 
 const createElement = (tag, className) => {
@@ -105,3 +106,18 @@ const loadGame = () => {
 }
 
 loadGame();
+
+// Botão Play / Pause
+
+var isPlaying = false;
+
+function togglePlay() {
+  isPlaying ? $themeAudio.pause() : $themeAudio.play();
+};
+
+$themeAudio.onplaying = function() {
+  isPlaying = true;
+};
+$themeAudio.onpause = function() {
+  isPlaying = false;
+};
