@@ -11,6 +11,13 @@ body {
     height: 100vh;
 }
 
+#playPause img {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 60px;
+}
+
 .grade {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

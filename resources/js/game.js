@@ -30,8 +30,7 @@ const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
-    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), 1000)
-    location.reload()
+    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), location.reload() , 1000)
   }
 }
 
