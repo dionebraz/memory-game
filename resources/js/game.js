@@ -34,7 +34,7 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 20) {
     clearInterval(startTimer)
-    setTimeout(() => alert(`Parabéns ${playerName.innerHTML}\nSeu tempo foi: ${timer.innerHTML} segundos.`), location.reload() , 1000)
+    setTimeout(() => alert(`Parabéns, você encontrou todas as cartas!!!`), location.reload() , 1000)
   }
 }
 
