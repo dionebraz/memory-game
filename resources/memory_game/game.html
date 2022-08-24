@@ -14,12 +14,18 @@
       rel="stylesheet"
     />
   </head>
-  <body onload="audioTheme()">
+  <body onload="loadGame()">
     <div id="playPause" onclick="togglePlay()">
       <img src="../icons/pause-circle.svg" alt="Botão de pausar música">
     </div>
-    <div class="grade"></div>
-    <audio id="audio-theme" src="../audio/theme-song.mp3"></audio>
-    <audio id="audio1" src="../audio/som-selection.mp3"></audio>
+    <main>
+      <header>
+        <span class="player"></span>
+        <span>Tempo: <span class="timer">00</span></span>
+      </header>
+      <div class="grade"></div>
+      <audio id="audio-theme" src="../audio/theme-song.mp3"></audio>
+      <audio id="audio1" src="../audio/som-selection.mp3"></audio>
+    </main>
   </body>
 </html>

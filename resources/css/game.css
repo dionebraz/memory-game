@@ -4,11 +4,16 @@
     box-sizing: border-box;
 }
 
-body {
+main {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: url("https://images3.alphacoders.com/882/882548.jpg") center / cover;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    padding: 20px 20px 50px;
+    color: #fff;
 }
 
 #playPause img {
@@ -16,12 +21,27 @@ body {
     top: 15px;
     left: 15px;
     width: 32px;
+    fill: #fff;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 0 30px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: rgba(72, 53, 126, 0.8);
 }
 
 .grade {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    gap: 15px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -41,7 +61,7 @@ body {
     height: 100%;
     position: absolute;
     border-radius: 6px;
-    border: 2px solid #39813a;
+    border: 2px solid #48357e;
     background: center / cover;
     transition: all .4s ease-in;
 }

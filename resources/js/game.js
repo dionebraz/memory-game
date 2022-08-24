@@ -1,5 +1,7 @@
 const grade = document.querySelector('.grade');
 const $themeAudio = document.querySelector('#audio-theme')
+const playerName = document.querySelector('.player')
+const timer = document.querySelector('.timer')
 
 const characters = [
   'Billy',
@@ -31,7 +33,8 @@ const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
-    setTimeout(() => alert('Parabéns, você encontrou todas as cartas!!!'), location.reload() , 1000)
+    clearInterval(startTimer)
+    setTimeout(() => alert(`Parabéns ${playerName.innerHTML}\nSeu tempo foi: ${timer.innerHTML} segundos.`), location.reload() , 1000)
   }
 }
 
@@ -105,8 +108,6 @@ const loadGame = () => {
   } );
 }
 
-loadGame();
-
 // Botão Play / Pause
 
 var isPlaying = false;
@@ -117,7 +118,29 @@ function togglePlay() {
 
 $themeAudio.onplaying = function() {
   isPlaying = true;
+  document.querySelector('#playPause img').src="../icons/pause-circle.svg"
 };
+
 $themeAudio.onpause = function() {
   isPlaying = false;
+  document.querySelector('#playPause img').src="../icons/play-circle.svg"
 };
+
+// Mostrar nome do jogador 
+
+playerName.innerHTML = localStorage.getItem('player')
+
+// temporizador 
+
+const startTimer = () => {
+  setInterval(() => {
+    const currentTime = Number(timer.innerHTML)
+    timer.innerHTML = currentTime + 1
+  }, 1000)
+}
+
+window.onload = () => {
+  loadGame()
+  audioTheme()
+  startTimer()
+}
