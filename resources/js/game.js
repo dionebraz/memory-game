@@ -10,10 +10,6 @@ const characters = [
   'Jonathan',
   'Karen',
   'Lucas',
-  'Max',
-  'Mike',
-  'Steve',
-  'Will',
 ];
 
 const audioTheme = () => {
@@ -33,9 +29,10 @@ let secondCard = '';
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
-  if (disabledCards.length === 20) {
+  if (disabledCards.length === 12) {
     clearInterval(startTimer)
-    setTimeout(() => alert(`Parabéns, você encontrou todas as cartas!!!`), location.reload() , 1000)
+    setTimeout(() => alert(`Parabéns, você encontrou todas as cartas!!!`), 1000)
+    setTimeout(() => location.reload(), 1500)
   }
 }
 
@@ -62,11 +59,11 @@ const checkCards = () => {
       secondCard = '';
     }, 500);
 
-    
+
   }
 }
 
-const revealCard = ({target}) => {
+const revealCard = ({ target }) => {
   if (target.parentNode.className.includes('reveal-card')) {
     return;
   }
@@ -94,19 +91,19 @@ const createCard = (character) => {
 
   card.addEventListener('click', revealCard);
   card.setAttribute('data-character', character)
-  
+
   return card;
 };
 
 const loadGame = () => {
-  const duplicateCharacters = [ ...characters, ...characters ];
+  const duplicateCharacters = [...characters, ...characters];
 
-  const shuffledArray = duplicateCharacters.sort( () => Math.random() - 0.5 );
+  const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
 
-  shuffledArray.forEach( (character) => {
+  shuffledArray.forEach((character) => {
     const card = createCard(character);
     grade.appendChild(card);
-  } );
+  });
 }
 
 // Botão Play / Pause
@@ -117,14 +114,14 @@ function togglePlay() {
   isPlaying ? $themeAudio.pause() : $themeAudio.play();
 };
 
-$themeAudio.onplaying = function() {
+$themeAudio.onplaying = function () {
   isPlaying = true;
-  document.querySelector('#playPause img').src="../icons/pause-circle.svg"
+  document.querySelector('#playPause img').src = "../icons/pause-circle.svg"
 };
 
-$themeAudio.onpause = function() {
+$themeAudio.onpause = function () {
   isPlaying = false;
-  document.querySelector('#playPause img').src="../icons/play-circle.svg"
+  document.querySelector('#playPause img').src = "../icons/play-circle.svg"
 };
 
 // Mostrar nome do jogador 
