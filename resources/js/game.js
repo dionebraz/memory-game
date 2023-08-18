@@ -14,7 +14,7 @@ const characters = [
 
 const audioTheme = () => {
   $themeAudio.play()
-  $themeAudio.volume = 0.05
+  $themeAudio.volume = 0.075
 }
 
 const createElement = (tag, className) => {
