@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: url("https://giffiles.alphacoders.com/121/12161.gif") no-repeat center center / contain;
+}
+
 main {
     display: flex;
     flex-direction: column;
